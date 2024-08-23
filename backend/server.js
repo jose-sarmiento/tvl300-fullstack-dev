@@ -1,9 +1,13 @@
 import "dotenv/config";
 
 import express from "express";
+import cors from "cors";
 import { loadRoutes } from "./routes/index.js";
 
 const app = express();
+
+// enable cors
+app.use(cors());
 
 /**
  * Load all routes
