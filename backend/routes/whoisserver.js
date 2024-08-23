@@ -11,33 +11,35 @@ const router = express.Router();
  * @param {string} [fields] - A comma-separated list of field names to include in the response. If not provided, all fields are included.
  * @returns {object} An object containing only the specified fields, or all fields if none are specified.
  */
-function pickFields(data, fields) {
+function pickFields(data, type) {
     const requiredData = {
-        domain_name: data?.WhoisRecord?.registryData?.domainName,
-        registrar_name: data?.WhoisRecord?.registryData?.registrarName,
-        expiration_date: data?.WhoisRecord?.registryData?.expirationDate,
-        estimated_domain_age: data?.WhoisRecord?.estimatedDomainAge,
-        host_names: formatHostnames(data?.WhoisRecord?.nameServers?.hostNames),
-        registrant_name: data?.WhoisRecord?.registrant?.organization,
-        technical_contact_name:
-            data?.WhoisRecord?.technicalContact?.organization,
-        administrative_contact_name:
-            data?.WhoisRecord?.administrativeContact?.organization,
-        contact_email: data?.WhoisRecord?.contactEmail,
+        domain_info: {
+            domain_name: data?.WhoisRecord?.registryData?.domainName,
+            registrar_name: data?.WhoisRecord?.registryData?.registrarName,
+            expiration_date: data?.WhoisRecord?.registryData?.expirationDate,
+            estimated_domain_age: data?.WhoisRecord?.estimatedDomainAge,
+            host_names: formatHostnames(
+                data?.WhoisRecord?.nameServers?.hostNames
+            ),
+        },
+        contact_info: {
+            registrant_name: data?.WhoisRecord?.registrant?.organization,
+            technical_contact_name:
+                data?.WhoisRecord?.technicalContact?.organization,
+            administrative_contact_name:
+                data?.WhoisRecord?.administrativeContact?.organization,
+            contact_email: data?.WhoisRecord?.contactEmail,
+        },
     };
 
     // If no fields are specified, return all the required data
-    if (!fields || fields === "") return requiredData;
+    if (!type || type === "") return requiredData;
 
-    const selectedFields = fields ? fields.split(",") : null;
+    if (type == "domain") return { domain_info: requiredData.domain_info };
 
-    const response = {};
+    if (type == "contact") return { contact_info: requiredData.contact_info };
 
-    selectedFields.forEach((field) => {
-        response[field] = requiredData[field] ?? null;
-    });
-
-    return response;
+    return requiredData;
 }
 
 router.get("/", async (req, res) => {
@@ -52,7 +54,7 @@ router.get("/", async (req, res) => {
     if (!domainInfo)
         return res.status(500).send(`Cannot extract info of ${domainName}`);
 
-    const responseData = pickFields(domainInfo, req.query.fields);
+    const responseData = pickFields(domainInfo, req.query.type);
     return res.json(responseData);
 });
 
