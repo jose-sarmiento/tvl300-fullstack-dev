@@ -50,12 +50,6 @@ const DomainForm = ({ form, handleChange, handleSubmit }) => {
                 >
                     Submit
                 </button>
-                <button
-                    type="submit"
-                    className="ml-3 px-4 py-2 text-gray-700 mx-auto rounded-md hover:border-gray-700 transition"
-                >
-                    Clear
-                </button>
             </form>
         </div>
     );

@@ -14,7 +14,6 @@ function snakeCaseToString(str) {
 }
 
 const Table = ({ data, infoType }) => {
-    console.log(data);
     return (
         <div className="overflow-x-auto mb-8 max-w-[50rem] mx-auto">
             <h2 className="heading text-md">{`${capitalize(
