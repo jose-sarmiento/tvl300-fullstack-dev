@@ -41,7 +41,7 @@ function App() {
 
         try {
             const response = await fetch(
-                `${API_BASE_URL}/whoisserver?domain=${form.domain}&type=${form.infoType}`,
+                `/api/whoisserver?domain=${form.domain}&type=${form.infoType}`,
                 {
                     method: "GET",
                 }
