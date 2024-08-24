@@ -19,7 +19,7 @@ const Table = ({ data, infoType }) => {
     const noData = Object.values(tempData).every((element) => element === null);
 
     return (
-        <div className="overflow-x-auto mb-8 max-w-[50rem] mx-auto">
+        <div className="overflow-x-auto mb-8 max-w-[65rem] mx-auto">
             <h2 className="heading text-md">{`${capitalize(
                 infoType
             )} Information`}</h2>
