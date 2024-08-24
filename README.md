@@ -133,3 +133,8 @@ this tells vercel how do build and serve the api
 -   Hit deploy and wait. Thats it you can now visit the website using the url given after deployment
 
 Vercel does the CI/CD so you dont have to worry redeploying it. just push your changes and it will automatically deploy
+
+#### Vist the live version of my assessment
+
+Frontend: https://tvl300-fullstack-dev-client-4y6gjgh9y.vercel.app/
+Backend: https://tvl300-fullstack-dev.vercel.app/api/whoisserver?domain=amazon.com&type=all
