@@ -4,7 +4,7 @@ TLV300- Home Assignment for Full Stack Developer
 
 This is production ready just change the proxy of the frontend to use the deployed version of the api
 
-## Installation
+## Installation (local development)
 
 ### Backend
 
@@ -65,6 +65,8 @@ Navigate to `frontend` directory.
 cd frontend
 ```
 
+Create `.env` file and paste the given environment variables. (I will send through Linkedin)
+
 Then run
 
 ```
@@ -90,3 +92,44 @@ That's it client is running on port 5000
 Notes:
 To view error handling try entering invalid domain or killing the backend server
 Select the type of information to view, by default set to `all`
+
+## Deployment to production
+
+### Backend
+
+-   Clone this repository and push it to your github account
+-   Create `vercel.json` in root directory of `backend` and paste this content
+
+```
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "./index.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/"
+        }
+    ]
+}
+```
+
+this tells vercel how do build and serve the api
+
+-   Signin to your vercel account
+-   Create new project and select the clone repo
+-   In the `root` dir input select the backend 6. Add environment variables in the input field
+-   Hit deploy and wait until the deployment completes, save the given url for later use
+
+### Frontend
+
+-   Using the same repository, create new project in vercel
+-   select the frontend dir as root directory
+-   Leave the defaults as is but populate the required environment variables
+-   Hit deploy and wait. Thats it you can now visit the website using the url given after deployment
+
+Vercel does the CI/CD so you dont have to worry redeploying it. just push your changes and it will automatically deploy

@@ -13,7 +13,6 @@ function App() {
         domain_info: null,
         contact_info: null,
     });
-    console.log(import.meta.env);
     const handleChange = (e) => {
         const { name, value } = e.target;
 
