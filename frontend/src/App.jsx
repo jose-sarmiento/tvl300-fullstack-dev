@@ -3,7 +3,7 @@ import "./App.css";
 import DomainForm from "./components/DomainForm/DomainForm";
 import Table from "./components/Table/Table";
 
-const API_BASE_URL = import.meta.env.VITE_BACKEND_API_ENDPOINT;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 function App() {
     const [form, setForm] = useState({ domain: "", infoType: "all" });
@@ -13,7 +13,7 @@ function App() {
         domain_info: null,
         contact_info: null,
     });
-
+    console.log(import.meta.env);
     const handleChange = (e) => {
         const { name, value } = e.target;
 
@@ -41,7 +41,7 @@ function App() {
 
         try {
             const response = await fetch(
-                `/api/whoisserver?domain=${form.domain}&type=${form.infoType}`,
+                `${API_BASE_URL}/api/whoisserver?domain=${form.domain}&type=${form.infoType}`,
                 {
                     method: "GET",
                 }
