@@ -17,6 +17,7 @@ function pickFields(data, type) {
             domain_name: data?.WhoisRecord?.registryData?.domainName || null,
             registrar_name:
                 data?.WhoisRecord?.registryData?.registrarName || null,
+            registration_date: data?.WhoisRecord?.createdDate || null,
             expiration_date: data?.WhoisRecord?.expiresDate || null,
             estimated_domain_age: data?.WhoisRecord?.estimatedDomainAge || null,
             host_names: formatHostnames(
