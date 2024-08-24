@@ -29,7 +29,7 @@ npm run dev
 to spin up development server. Navigate to browser and enter
 
 ```
-http://localhost:5000/whoisserver?domain=amazon.com&type=all
+http://localhost:5001/whoisserver?domain=amazon.com&type=all
 ```
 
 You will see json response like this
@@ -79,12 +79,12 @@ npm run dev
 to spin up development server. Navigate to browser and enter
 
 ```
-http://localhost:5173
+http://localhost:5000
 ```
 
 Try to enter `amazon.com`
 
-That's it client is running on port 5173
+That's it client is running on port 5000
 
 Notes:
 To view error handling try entering invalid domain or killing the backend server
