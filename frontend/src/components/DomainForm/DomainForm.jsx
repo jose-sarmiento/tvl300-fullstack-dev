@@ -1,6 +1,14 @@
 import React from "react";
+import Error from "../Error/Error";
 
-const DomainForm = ({ form, handleChange, handleSubmit }) => {
+const DomainForm = ({
+    form,
+    error,
+    handleChange,
+    handleSubmit,
+    handleErrorCLose,
+    isLoading,
+}) => {
     return (
         <div className="max-w-lg mx-auto mb-12">
             <form className="mb-6 shadow-md px-2 py-6" onSubmit={handleSubmit}>
@@ -43,10 +51,15 @@ const DomainForm = ({ form, handleChange, handleSubmit }) => {
                     </select>
                 </div>
 
+                {error && (
+                    <Error text={error} handleErrorCLose={handleErrorCLose} />
+                )}
+
                 {/* Submit Button */}
                 <button
                     type="submit"
-                    className="px-4 py-2 bg-gray-700 text-white mx-auto rounded-md hover:bg-gray-600 transition"
+                    className="px-4 py-2 bg-gray-700 text-white mx-auto rounded-md hover:bg-gray-600 transition isabled:cursor-not-allowed disabled:bg-gray-400"
+                    disabled={isLoading}
                 >
                     Submit
                 </button>
