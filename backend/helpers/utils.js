@@ -1,4 +1,6 @@
 export function formatHostnames(hostnames, limit = 25) {
+    if (!hostnames || hostnames === "") return null;
+
     const hostnamesStr = hostnames.join(",");
 
     // Check if the length of the string exceeds 25 characters

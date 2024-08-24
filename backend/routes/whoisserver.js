@@ -14,21 +14,23 @@ const router = express.Router();
 function pickFields(data, type) {
     const requiredData = {
         domain_info: {
-            domain_name: data?.WhoisRecord?.registryData?.domainName,
-            registrar_name: data?.WhoisRecord?.registryData?.registrarName,
-            expiration_date: data?.WhoisRecord?.registryData?.expirationDate,
-            estimated_domain_age: data?.WhoisRecord?.estimatedDomainAge,
+            domain_name: data?.WhoisRecord?.registryData?.domainName || null,
+            registrar_name:
+                data?.WhoisRecord?.registryData?.registrarName || null,
+            expiration_date: data?.WhoisRecord?.expiresDate || null,
+            estimated_domain_age: data?.WhoisRecord?.estimatedDomainAge || null,
             host_names: formatHostnames(
                 data?.WhoisRecord?.nameServers?.hostNames
             ),
         },
         contact_info: {
-            registrant_name: data?.WhoisRecord?.registrant?.organization,
+            registrant_name:
+                data?.WhoisRecord?.registrant?.organization || null,
             technical_contact_name:
-                data?.WhoisRecord?.technicalContact?.organization,
+                data?.WhoisRecord?.technicalContact?.organization || null,
             administrative_contact_name:
-                data?.WhoisRecord?.administrativeContact?.organization,
-            contact_email: data?.WhoisRecord?.contactEmail,
+                data?.WhoisRecord?.administrativeContact?.organization || null,
+            contact_email: data?.WhoisRecord?.contactEmail || null,
         },
     };
 
