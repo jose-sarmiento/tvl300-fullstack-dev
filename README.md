@@ -29,7 +29,7 @@ npm run dev
 to spin up development server. Navigate to browser and enter
 
 ```
-http://localhost:5001/whoisserver?domain=amazon.com&type=all
+http://localhost:5001/api/whoisserver?domain=amazon.com&type=all
 ```
 
 You will see json response like this
@@ -37,17 +37,18 @@ You will see json response like this
 ```
 {
     "domain_info": {
-        "domain_name": "amazon.com",
+        "domain_name": "youtube.com",
         "registrar_name": "MarkMonitor Inc.",
-        "expiration_date": "2024-10-30T07:00:00+0000",
-        "estimated_domain_age": 10888,
-        "host_names": "ns1.amzndns.org,ns2.am..."
+        "registration_date": "2005-02-15T05:13:12+0000",
+        "expiration_date": "2025-02-15T00:00:00+0000",
+        "estimated_domain_age": 7129,
+        "host_names": "ns2.google.com,ns1.goo..."
     },
     "contact_info": {
-        "registrant_name": "Amazon Technologies, Inc.",
-        "technical_contact_name": "Amazon Technologies, Inc.",
-        "administrative_contact_name": "Amazon Technologies, Inc.",
-        "contact_email": "hostmaster@amazon.com"
+        "registrant_name": "Google LLC",
+        "technical_contact_name": "Google LLC",
+        "administrative_contact_name": "Google LLC",
+        "contact_email": "abusecomplaints@markmonitor.com"
     }
 }
 ```
@@ -67,8 +68,6 @@ Then run
 ```
 npm install
 ```
-
-Create `.env` file and paste the given environment variables. (I will send through Linkedin)
 
 After the installation is complete run
 
