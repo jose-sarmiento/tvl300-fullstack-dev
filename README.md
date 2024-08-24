@@ -29,7 +29,7 @@ npm run dev
 to spin up development server. Navigate to browser and enter
 
 ```
-http://localhost:5001/api/whoisserver?domain=amazon.com&type=all
+http://localhost:5001/api/whoisserver?domain=youtube.com&type=all
 ```
 
 You will see json response like this
