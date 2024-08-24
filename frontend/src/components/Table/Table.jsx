@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 
 function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -17,6 +18,8 @@ const Table = ({ data, infoType }) => {
     let tempData = { ...data };
     delete tempData.domain_name;
     const noData = Object.values(tempData).every((element) => element === null);
+
+    const dateFields = ["registration_date", "expiration_date"];
 
     return (
         <div className="overflow-x-auto mb-8 max-w-[65rem] mx-auto">
@@ -41,14 +44,25 @@ const Table = ({ data, infoType }) => {
                 <tbody>
                     {!noData && (
                         <tr className="border-b border-gray-200">
-                            {Object.values(data).map((value, index) => (
-                                <td
-                                    key={index}
-                                    className="px-2 py-2 text-gray-900 text-xs duration-100 ease-in-out hover:bg-gray-100"
-                                >
-                                    {value}
-                                </td>
-                            ))}
+                            {Object.entries(data).map(([key, value], index) => {
+                                if (dateFields.includes(key)) {
+                                    value = moment(value).format(
+                                        "MMMM Do, YYYY, h:mm A (Z)"
+                                    );
+                                }
+
+                                if (key === "estimated_domain_age") {
+                                    value = value + " days";
+                                }
+                                return (
+                                    <td
+                                        key={key} // Use the key here for uniqueness
+                                        className="px-2 py-2 text-gray-900 text-xs duration-100 ease-in-out hover:bg-gray-100"
+                                    >
+                                        {value}
+                                    </td>
+                                );
+                            })}
                         </tr>
                     )}
                 </tbody>

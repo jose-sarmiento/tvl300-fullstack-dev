@@ -2,6 +2,8 @@
 
 TLV300- Home Assignment for Full Stack Developer
 
+This is production ready just change the proxy of the frontend to use the deployed version of the api
+
 ## Installation
 
 ### Backend
